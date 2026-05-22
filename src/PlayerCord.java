@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class PlayerCord extends WorldCord {
     World world;
 
@@ -15,6 +17,22 @@ public class PlayerCord extends WorldCord {
         return x > 0 && y > 0 &&
                 x < world.mapLenX - 1 &&
                 y < world.mapLenY - 1;
+    }
+
+    private static final Random RANDOM = new Random();
+
+    public PlayerCord getRandomDirection(){
+        int r = RANDOM.nextInt(4);
+        return switch (r) {
+            case 0 -> this.up();
+            case 1 -> this.right();
+            case 2 -> this.left();
+            default -> this.down();
+        };
+    }
+
+    public int distanceTo(PlayerCord point2){
+        return Math.abs(this.x - point2.x) + Math.abs(this.y - point2.y);
     }
 
     @Override

@@ -6,13 +6,12 @@ void main(String[] args) {
     World currentWorld = WorldSet.getWorld(new WorldCord(0,0));
     currentWorld.initPlayerAt(new PlayerCord(5,5,currentWorld));
     PlayerEntity player = new PlayerEntity(0, 100);
-
     Scanner sc = new Scanner(System.in);
 
     FeatureDrawer.draw(currentWorld, currentWorld.PORTALS);
 
     while (player.canRun) {
-        currentWorld.display();
+        currentWorld.display(player.hp);
         char input = sc.nextLine().charAt(0);
         player.tick(currentWorld, input);
         currentWorld = player.currentWorld;

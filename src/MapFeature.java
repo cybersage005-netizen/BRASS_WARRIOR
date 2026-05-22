@@ -1,6 +1,6 @@
 public abstract class MapFeature {
     FeatureType type;
-    PlayerCord cord;
+    public PlayerCord cord;
     char ch;
     World world;
 
@@ -10,6 +10,8 @@ public abstract class MapFeature {
         this.ch = ch;
         this.world = world;
     }
+
+
 
 
 }
