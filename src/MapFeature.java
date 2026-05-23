@@ -11,7 +11,20 @@ public abstract class MapFeature {
         this.world = world;
     }
 
+    public void tryInteract(PlayerEntity player) {
+        if (this.cord.equals(world.playerCord)) {
+            onInteract(player);
+        }
+    }
 
+    public  void onInteract(PlayerEntity player){
+    }
 
+    public boolean isBlocking(){
+        return false;
+    }
 
+    public boolean canRender(){
+        return true;
+    }
 }
