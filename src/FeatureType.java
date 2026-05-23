@@ -1,4 +1,5 @@
 public enum FeatureType {
     PORTAL,
-    CONSUMABLE
+    CONSUMABLE,
+    OBSTACLE
 }

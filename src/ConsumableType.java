@@ -1,3 +1,3 @@
 public enum ConsumableType {
-    APPLE
+    APPLE, COIN, ITEM
 }
