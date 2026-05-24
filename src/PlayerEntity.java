@@ -1,15 +1,22 @@
+import java.util.PriorityQueue;
+import java.util.Queue;
+
 public class PlayerEntity extends CharacterEntity {
     public boolean canRun = true;
     public World currentWorld = WorldSet.getWorld(new WorldCord(0,0));
     int currency = 0;
     double hp;
     Inventory inventory = new Inventory();
+    int rememberTick = 0;
+    Queue<ItemStack> effectQueue = new PriorityQueue<>();
+
     PlayerEntity(int id, int maxHP) {
         super(id, maxHP); this.hp = maxHP;
         inventory.clear();
     }
 
     public void tick(World world, char choice){
+        this.tick+=1;
         if(this.hp <= 0){
             System.out.println("Player Fainted");
             this.canRun = false;

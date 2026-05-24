@@ -7,12 +7,12 @@ public abstract class EnemyEntity extends CharacterEntity{
     char ch;
     List<PlayerCord> path;
     int relativeTick = 0;
-    EnemyEntity(int id, int maxHP, int damage, char ch, int searchRadius, PlayerCord cord, World world) {
-        super(id, maxHP);
-        this.damage = damage;
+    EnemyEntity(int id, Enemies enemyType, PlayerCord cord, World world) {
+        super(id, enemyType.maxHp);
+        this.damage = enemyType.damage;
         this.entityCord = cord;
-        this.searchRadius =searchRadius;
-        this.ch =ch;
+        this.searchRadius =enemyType.sr;
+        this.ch =enemyType.ch;
         this.path = getPath(world, cord, world.playerCord);
     }
 
