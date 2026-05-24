@@ -20,6 +20,17 @@ public class Inventory {
         throw new IllegalStateException("Inventory is full");
     }
 
+    public void tickInventory(char choice, PlayerEntity player) {
+        if (!"123456789".contains(String.valueOf(choice))) return;
+
+        int slot = Integer.parseInt(String.valueOf(choice)) - 1;
+        ItemStack stack = this.getItem(slot);
+        if (stack == null ) return;
+        stack.onUse(player);
+        ItemStack remaining = stack.decrease(1);
+        this.setItem(slot, remaining);
+    }
+
     public void setItem(int slot, ItemStack item) {
         checkSlot(slot);
         items[slot] = item;

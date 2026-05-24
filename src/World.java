@@ -17,6 +17,7 @@ public class World {
         this.mapLenY = yLen;
         playerCord = new PlayerCord(5,5,this);
         this.map = this.createWorld();
+
     }
 
     public void initPlayerAt(PlayerCord cord){

@@ -20,6 +20,10 @@ public class ItemStack extends ConsumableFeature {
         this.isEaten = true;
     }
 
+    public void onUse(PlayerEntity player){
+        this.item.use(player);
+    }
+
     public Items getItem() {
         return item;
     }
@@ -32,12 +36,14 @@ public class ItemStack extends ConsumableFeature {
         this.count = Math.max(1, count);
     }
 
-    public void increase(int amount) {
+    public ItemStack increase(int amount) {
         this.count = Math.min(count + amount, item.maxCount);
+        return this;
     }
 
-    public void decrease(int amount) {
+    public ItemStack decrease(int amount) {
         this.count = Math.max(0, this.count - amount);
+        return this;
     }
 
     @Override
@@ -49,11 +55,21 @@ public class ItemStack extends ConsumableFeature {
 
     @Override
     public String toString() {
-        String name = item.name;
-        if (name.isEmpty()) {
+        if (item == null || item.name.isEmpty()) {
             return "Unknown";
         }
-        return name.substring(0, 1).toUpperCase() + name.substring(1);
+        String name = item.name;
+        String[] words = name.split("_");
+        StringBuilder result = new StringBuilder();
+
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                result.append(word.substring(0, 1).toUpperCase())
+                        .append(word.substring(1).toLowerCase()).append(" ");
+            }
+        }
+
+        return result.toString().trim();
     }
 
     @Override

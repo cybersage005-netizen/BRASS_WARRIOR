@@ -26,12 +26,14 @@ public class WorldManager {
         World B0_A2 = createWorld(0, 2, 15, 15);
         B0_A2.FEATURES.add(new AppleFeature(new PlayerCord(8, 11, B0_A2), B0_A2));
 
-        B0_A2.ENEMIES.add(new SlimeEntity(0, 30, 10, 'S',5, new PlayerCord(11,11, B0_A2), B0_A2));
+        B0_A2.ENEMIES.add(new SlimeEntity(0, Enemies.SLIME, new PlayerCord(11,11, B0_A2), B0_A2));
         B0_A2.FEATURES.add(new ObstacleFeature(new PlayerCord(7,8, B0_A2), B0_A2));
         B0_A2.summonEntity();
 
         World C1_B0 = createWorld(-1, 0, 20, 20);
         C1_B0.FEATURES.add(new ItemStack(Items.BANANA, new PlayerCord(15, 15, C1_B0), C1_B0, 20));
+        C1_B0.ENEMIES.add(new SlimeEntity(1, Enemies.SLIME, new PlayerCord(10, 14, C1_B0), C1_B0));
+        C1_B0.summonEntity();
 
 
     }

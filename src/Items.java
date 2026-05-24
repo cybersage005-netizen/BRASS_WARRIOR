@@ -1,5 +1,12 @@
 public enum Items {
-    BANANA("banana", 32, 'B');
+    BANANA("banana", 32, 'B'){
+        @Override
+        public void use(PlayerEntity entity){
+            if(entity.hp+5 > entity.maxHP) return;
+            entity.hp += 5;
+        }
+    }
+    ;
 
     final String name;
     final int maxCount;
@@ -10,4 +17,6 @@ public enum Items {
         this.maxCount = maxCount;
         this.ch = ch;
     }
+
+    public abstract void use(PlayerEntity player);
 }

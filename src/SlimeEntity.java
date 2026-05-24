@@ -1,7 +1,7 @@
 
 public class SlimeEntity extends EnemyEntity{
-    SlimeEntity(int id, int maxHP, int damage, char ch, int sr,PlayerCord cord, World world) {
-        super(id, maxHP, damage, ch,  sr, cord, world);
+    SlimeEntity(int id, Enemies enemy,PlayerCord cord, World world) {
+        super(id, enemy, cord, world);
     }
 
     @Override

@@ -8,11 +8,11 @@ void main() {
     PlayerEntity player = new PlayerEntity(0, 100);
     Scanner sc = new Scanner(System.in);
 
-
     while (player.canRun) {
         currentWorld.display(player);
         char input = sc.nextLine().charAt(0);
         player.tick(currentWorld, input);
+        player.inventory.tickInventory(input, player);
         currentWorld = player.currentWorld;
     }
 
